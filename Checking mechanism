@@ -1,0 +1,45 @@
+checkWinner(m_data, b);
+        /*for (y = 0; y < (b - 5); y++)
+         {
+         for (x = 0; x < (b*0.5 + 1); x++)
+         {
+         if (m_data[x][y] == 1 && m_data[x + 1][y] == 1 && m_data[x + 2][y] == 1 && m_data[x + 3][y] == 1 && m_data[x + 4][y] == 1)
+         printf("white win\n");
+         if (m_data[x][y] == 0 && m_data[x + 1][y] == 0 && m_data[x + 2][y] == 0 && m_data[x + 3][y] == 0 && m_data[x + 4][y] == 0)
+         printf("black win\n");
+         }
+         }
+         for (y = 0; y < (b*0.5 + 1); y++)
+         {
+         for (x = 0; x < (b - 5); x++)
+         {
+         if (m_data[x][y] == 1 && m_data[x][y + 1] == 1 && m_data[x][y + 2] == 1 && m_data[x][y + 3] == 1 && m_data[x][y + 4] == 1)
+         printf("white win\n");
+         if (m_data[x][y] == 0 && m_data[x][y + 1] == 0 && m_data[x][y + 2] == 0 && m_data[x][y + 3] == 0 && m_data[x][y + 4] == 0)
+         printf("black win\n");
+         }
+         }
+         for (y = 0; y < (b*0.5 + 1); y++)
+         {
+         for (x = 0; x < (b*0.5 + 1); x++)
+         {
+         if (m_data[x][y] == 1 && m_data[x + 1][y + 1] == 1 && m_data[x + 2][y + 2] == 1 && m_data[x + 3][y + 3] == 1 && m_data[x + 4][y + 4] == 1)
+         printf("white win\n");
+         if (m_data[x][y] == 0 && m_data[x + 1][y + 1] == 0 && m_data[x + 2][y + 2] == 0 && m_data[x + 3][y + 3] == 0 && m_data[x + 4][y + 4] == 0)
+         printf("black win\n");
+         }
+         }
+         for (y = 0; y < (b*0.5 + 1); y++)
+         {
+         for (x = 4; x < (b - 5); x++)
+         {
+         if (m_data[x][y] == 1 && m_data[x - 1][y + 1] == 1 && m_data[x - 2][y + 2] == 1 && m_data[x - 3][y + 3] == 1 && m_data[x - 4][y + 4] == 1)
+         printf("white win\n");
+         if (m_data[x][y] == 0 && m_data[x - 1][y + 1] == 0 && m_data[x - 2][y + 2] == 0 && m_data[x - 3][y + 3] == 0 && m_data[x - 4][y + 4] == 0)
+         printf("black win\n");
+         }
+         }
+         printf("neither\n");*/
+    }
+    return 0;
+}
