@@ -82,7 +82,7 @@ def check_win(grid_score):
     
 ### Initialises a blank score array, move set, then 
 ### Plays the game given the moves and add scores
-def play_game(score):
+def play_game(score,n=1):
     grid_score = init_grid()
     moves = generate_moves()
     turn = 0
@@ -90,7 +90,7 @@ def play_game(score):
     for move in moves:
         turn += 1
         # print(move)
-        if turn % 2 == 1:
+        if turn % 2 == n:
             grid_score = np.add(grid_score,win_con[move])
         else:
             grid_score = np.subtract(grid_score,win_con[move])
@@ -111,7 +111,11 @@ def simulate(trials):
     ## score keeps the win ratio [crosses,naughts]
     for n in range(0, trials):
         print(int(100*n/trials),"%")   ### Prints progress
-        score = play_game(score)
+        ### To alternate the starting player
+        if n%2 == 0:
+            score = play_game(score)
+        else:
+            score = play_game(score,0)
         
     cross_score = score[0]
     naught_score = score[1]
@@ -125,7 +129,7 @@ def simulate(trials):
     print("Time taken: ", time_taken, "s")
             
             
-simulate(1000000)
+simulate(100000)
 
 
 
