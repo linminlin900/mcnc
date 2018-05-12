@@ -55,12 +55,12 @@ win_con = {'a':np.array([1,0,0,1,0,0,1,0]),
 
 
 
-
+### Creates initial score array
 def init_grid(grid_size=8):
     grid = np.zeros(grid_size)
     return grid
     
-    
+### Generates a random sequence of moves
 def generate_moves(grid_size=3):
     coordinates = ['a','b','c','d','e','f','g','h','i']
     ''' This is to generate (x,y) coordinates
@@ -71,10 +71,8 @@ def generate_moves(grid_size=3):
     rd.shuffle(coordinates,rd.random)
     return coordinates
 
-
+### Checks if any of the scores reach 3 (cross wins) or -3(naughts win)
 def check_win(grid_score):
-    # checks if the score reaches 3 (cross wins) or -3 (naughts wins) 
-    # else no result
     if np.amax(grid_score) == 3:
         return 0
     if np.amin(grid_score) == -3:
@@ -82,46 +80,52 @@ def check_win(grid_score):
     else: 
         return 2
     
+### Initialises a blank score array, move set, then 
+### Plays the game given the moves and add scores
+def play_game(score):
+    grid_score = init_grid()
+    moves = generate_moves()
+    turn = 0
+    # print(moves)
+    for move in moves:
+        turn += 1
+        # print(move)
+        if turn % 2 == 1:
+            grid_score = np.add(grid_score,win_con[move])
+        else:
+            grid_score = np.subtract(grid_score,win_con[move])
+        # print(grid_score)
+        if turn>4:
+            outcome = check_win(grid_score)
+            if outcome != 2:
+                score[outcome] += 1
+                #print(score)
+                break
+    return score
 
-    
+### Main function
 def simulate(trials):
     start = time.time()
     n = 0
     score = np.array([0,0])
     ## score keeps the win ratio [crosses,naughts]
     for n in range(0, trials):
-        print(100*n/trials,"%")
-        grid_score = init_grid()
-        moves = generate_moves()
-        turn = 0
-        # print(moves)
-        for move in moves:
-            turn += 1
-            # print(move)
-            if turn % 2 == 1:
-                grid_score = np.add(grid_score,win_con[move])
-            else:
-                grid_score = np.subtract(grid_score,win_con[move])
-            # print(grid_score)
-            if turn>4:
-                outcome = check_win(grid_score)
-                if outcome != 2:
-                    score[outcome] += 1
-                    #print(score)
-                    break
+        print(int(100*n/trials),"%")   ### Prints progress
+        score = play_game(score)
+        
     cross_score = score[0]
     naught_score = score[1]
     draw_score = trials - (cross_score + naught_score)
     time_taken = time.time() - start
     
     print("Games: ", trials)
-    print("Cross: ",cross_score)
-    print("Naughts: ", naught_score)
-    print("Draws: ", draw_score)
+    print("Cross: ",cross_score/trials)
+    print("Naughts: ", naught_score/trials)
+    print("Draws: ", draw_score/trials)
     print("Time taken: ", time_taken, "s")
             
             
-simulate(5000)
+simulate(1000000)
 
 
 
