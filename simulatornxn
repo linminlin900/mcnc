@@ -56,14 +56,14 @@ def rotate_grid(grid):
 def check_rows(subgrid,m):
     col_sum = np.sum(subgrid,axis = 0)
     col_sum = set(col_sum)
-    if 3. in col_sum:
+    if m in col_sum:
         return 0
-    if -3. in col_sum:
+    if -m in col_sum:
         return 1
     trace = np.trace(subgrid)
-    if trace == 3.:
+    if trace == m:
         return 0
-    elif trace == -3.:
+    elif trace == -m:
         return 1
     return 2
 
@@ -117,7 +117,7 @@ def main(trials,n,m):
 
 
 
-main(10000,7,5)
+main(10000,7,6)
 
 
 
