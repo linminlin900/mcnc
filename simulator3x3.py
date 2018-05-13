@@ -17,7 +17,7 @@ For a 3 X 3 Grid with the following setup:
 
   a | b | c       Crosses: 1
  ---|---|---
-  d | e | f       Naughts: 1
+  d | e | f       Naughts: -1
  ---|---|---
   g | h | i       Blank: 0
 
@@ -68,7 +68,7 @@ def generate_moves(grid_size=3):
         for y in range(grid_size):
             coordinates.append((x,y))
     '''
-    rd.shuffle(coordinates,rd.random)
+
     return coordinates
 
 ### Checks if any of the scores reach 3 (cross wins) or -3(naughts win)

@@ -117,7 +117,7 @@ def main(trials,n,m):
 
 
 
-main(10000,7,6)
+main(10000,6,4)
 
 
 
