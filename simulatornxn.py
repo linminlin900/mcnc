@@ -105,21 +105,24 @@ def simulate(trials,n,m):
     
 #    return score
 
-    cross_score = score[0]
-    naught_score = score[1]
-    draw_score = trials - (cross_score + naught_score)
     time_taken = time.time() - start
-        
-#    print("Games: ", trials)
-#    print("Edge", (cross_score - naught_score)/trials)
+    
+    p1_win = score[0]
+    p2_win = score[1]
+    draw = trials - p1_win - p2_win
 
-
+    print('Games: ',trials)
+    print('M,N: ', m, n)
+    print('Draw: ', draw)
+    print('P1 Win: ',p1_win)
+    print('P2 Win: ',p2_win)
+    print('Time taken:', time.time()-start)
     return score
 
 ''' Score is in the format [Cross_score, Naught_score] '''
 
 
-
+simulate(1000,8,5)
 
 
 
