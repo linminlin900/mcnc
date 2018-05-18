@@ -34,7 +34,7 @@ into constituent m x m arrays and
 
 ### Create a 2d  n x n array of 0s
 def init_grid(n=3):
-    return np.zeros((n,n))
+    return np.zeros((n,n),dtype=np.int)
 
 ### Create a random order of nxn moves
 def generate_moves(n):
@@ -87,7 +87,7 @@ def play_game(score,n,m):
     for move in moves:
         turn += 1
         grid = play_move(grid,n,move,turn)
-
+        print(grid)
         min_move = m*2-1
         if turn > min_move:
             outcome = check_win(grid,n,m)
@@ -111,18 +111,19 @@ def simulate(trials,n,m):
     p2_win = score[1]
     draw = trials - p1_win - p2_win
 
+
     print('Games: ',trials)
     print('M,N: ', m, n)
     print('Draw: ', draw)
     print('P1 Win: ',p1_win)
     print('P2 Win: ',p2_win)
     print('Time taken:', time.time()-start)
-    return score
+    return np.array((p1_win,p2_win))
 
 ''' Score is in the format [Cross_score, Naught_score] '''
 
-
-simulate(1000,8,5)
+np.random.seed(7)
+print(simulate(500,3,3))
 
 
 
